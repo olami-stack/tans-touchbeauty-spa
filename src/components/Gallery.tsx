@@ -220,13 +220,22 @@ export default function Gallery() {
             onClick={() => setSelectedVideo(null)}
             className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#120E0A]/95 backdrop-blur-md"
           >
+            {/* Always-visible close button, independent of modal scroll */}
+            <button
+              onClick={() => setSelectedVideo(null)}
+              aria-label="Close video"
+              className="fixed top-5 right-5 z-[60] w-11 h-11 rounded-full flex items-center justify-center bg-[#1C1611] border border-gold/30 text-cream hover:text-gold hover:border-gold transition-colors shadow-lg focus:outline-none"
+            >
+              ✕
+            </button>
+
             <motion.div
               initial={{ scale: 0.9, y: 20 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 20 }}
               transition={{ type: 'spring', damping: 25, stiffness: 220 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-sm sm:max-w-md rounded-2xl overflow-hidden border border-gold/25 bg-[#120E0A] shadow-2xl mx-auto"
+              className="relative w-full max-w-sm sm:max-w-md max-h-[90vh] overflow-y-auto rounded-2xl border border-gold/25 bg-[#120E0A] shadow-2xl mx-auto"
             >
               {/* Modal Video Header */}
               <div className="flex items-center justify-between px-6 py-4 border-b border-gold/10 bg-[#1C1611]/80">
