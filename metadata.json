@@ -1,0 +1,6 @@
+{
+  "name": "Tan's Touch Beauty Spa",
+  "description": "Premium 24-hour beauty spa in Victoria Island, Lagos.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

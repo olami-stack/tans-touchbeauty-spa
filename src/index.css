@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #F5EFE4;
+  --color-cream-dark: #EADEC9;
+  --color-gold: #A9884E;
+  --color-gold-light: #C9A35E;
+  --color-gold-dark: #8C6F3D;
+  --color-brown: #3A2E1F;
+  --color-brown-light: #4E3F2E;
+  --color-brown-dark: #241B10;
+  --color-olive: #2E3324;
+  --color-olive-light: #3F4632;
+  
+  --font-sans: "Inter", sans-serif;
+  --font-serif: "Playfair Display", serif;
+}
+
+body {
+  background-color: #F5EFE4;
+  color: #3A2E1F;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom shimmer/placeholder background */
+.shimmer-bg {
+  background: linear-gradient(135deg, #F0E8D9 0%, #E6DAC4 50%, #F0E8D9 100%);
+  background-size: 200% 200%;
+  animation: shimmer 8s ease infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Custom styles for professional smooth animations */
+.premium-card {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+  box-shadow: 0 4px 20px -2px rgba(58, 46, 31, 0.02), 0 2px 8px -1px rgba(58, 46, 31, 0.01);
+  border-radius: 20px;
+}
+
+@media (hover: hover) {
+  .premium-card:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 20px 25px -5px rgba(58, 46, 31, 0.08), 0 10px 10px -5px rgba(58, 46, 31, 0.03);
+    border-color: rgba(169, 136, 78, 0.2);
+  }
+}
+
