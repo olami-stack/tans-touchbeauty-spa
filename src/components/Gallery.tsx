@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from 'motion/react';
 import hammamSpaCard from '../assets/images/hammam_spa_card_1783627605364.jpg';
 import bespokeBodyPolish from '../assets/images/bespoke_body_polish_1783627649827.jpg';
 import immersiveNigerianLadySpa from '../assets/images/immersive_nigerian_lady_spa_1783637278539.jpg';
+import bodyMassageCard from '../assets/images/body_massage_card_1783627580683.jpg';
+import ledFacialCard from '../assets/images/led_facial_card_1783627593297.jpg';
 
 interface VideoItem {
   id: string;
@@ -19,7 +21,7 @@ const DEFAULT_VIDEOS: VideoItem[] = [
     id: 'vid-1',
     title: 'Hammam Steam & Detox Experience',
     category: 'Wellness',
-    url: 'https://pub-37df63176e3c4891bd0bd2b2187205dc.r2.dev/SaveVid.Net_AQMak92LyO5FNoxxc3dmJ4ewlpYVFZf6x--Y0veHzTcomY1a0q7JcEUW7qYnTiWAPB20LeDq-n9KUYqWOtb7coG3r2sqsZQj7sLTph8.mp4',
+    url: 'https://pub-37df63176e3c4891bd0bd2b2187205dc.r2.dev/SaveVid.Net_AQNJ1FecCuiVTc46Da8YVs9w3HpVzxjwmd2f7r2_OlwMviqClv32wms_iaxkJIUfDzFT3hxeMCz_YnbkE2pRijqSSlgv8wsNTL_ca4o.mp4',
     duration: '0:30',
     thumbnail: hammamSpaCard
   },
@@ -27,7 +29,7 @@ const DEFAULT_VIDEOS: VideoItem[] = [
     id: 'vid-2',
     title: 'Bespoke Body Polish & Ritual',
     category: 'Therapy',
-    url: 'https://pub-37df63176e3c4891bd0bd2b2187205dc.r2.dev/SaveVid.Net_AQMak92LyO5FNoxxc3dmJ4ewlpYVFZf6x--Y0veHzTcomY1a0q7JcEUW7qYnTiWAPB20LeDq-n9KUYqWOtb7coG3r2sqsZQj7sLTph8.mp4',
+    url: 'https://pub-37df63176e3c4891bd0bd2b2187205dc.r2.dev/SaveVid.Net_AQNi_FJZoQR1sIvbjosnZHe5rRPR_ZfnG2Qw_wyBqMVSl9vQOdmQr9c_ZrQUHsCD5QGXDjDwl01SCfdM7lrRmDkoN-XTFk1TAYl8EEY.mp4',
     duration: '0:30',
     thumbnail: bespokeBodyPolish
   },
@@ -35,9 +37,25 @@ const DEFAULT_VIDEOS: VideoItem[] = [
     id: 'vid-3',
     title: 'Sanctuary Face & Skin Renewal',
     category: 'Aesthetics',
-    url: 'https://pub-37df63176e3c4891bd0bd2b2187205dc.r2.dev/SaveVid.Net_AQMak92LyO5FNoxxc3dmJ4ewlpYVFZf6x--Y0veHzTcomY1a0q7JcEUW7qYnTiWAPB20LeDq-n9KUYqWOtb7coG3r2sqsZQj7sLTph8.mp4',
+    url: 'https://pub-37df63176e3c4891bd0bd2b2187205dc.r2.dev/SaveVid.Net_AQOfU3N5RTueqSdXHcxM3Bg4SsBiXkTlxW_DMe6SfGDeSWWDjvGTAhbIO-Hb4BV3DzvDhJIVMmH-YcPsRemST7_MNIRhGYkO0B_ycUE.mp4',
     duration: '0:30',
     thumbnail: immersiveNigerianLadySpa
+  },
+  {
+    id: 'vid-4',
+    title: 'Deep Tissue Body Massage',
+    category: 'Massage',
+    url: 'https://pub-37df63176e3c4891bd0bd2b2187205dc.r2.dev/SaveVid.Net_AQP051CVAvg2AekhIkaA9IOPVRKHMV3jwRwOe6KgY0sNeBPgiuX_yfsx3V1xtH4zcs3a65KFEhLyfJ2peIFJIojX.mp4',
+    duration: '0:30',
+    thumbnail: bodyMassageCard
+  },
+  {
+    id: 'vid-5',
+    title: 'LED Facial Glow Therapy',
+    category: 'Aesthetics',
+    url: 'https://pub-37df63176e3c4891bd0bd2b2187205dc.r2.dev/SaveVid.Net_AQPZ9V2yVAhDu77MZU7JEHl9DHVU96FZE60jZFc0ncE5DeQFvS2kp42R0XSkB-2hpA55xCuBx31TK3wKlBfHKNrB.mp4',
+    duration: '0:30',
+    thumbnail: ledFacialCard
   }
 ];
 
@@ -168,7 +186,7 @@ export default function Gallery() {
                   </span>
                   
                   {/* Custom Added Deletion Support */}
-                  {!vid.id.startsWith('vid-1') && !vid.id.startsWith('vid-2') && !vid.id.startsWith('vid-3') && (
+                  {!DEFAULT_VIDEOS.some((dv) => dv.id === vid.id) && (
                     <button
                       onClick={(e) => handleDeleteVideo(vid.id, e)}
                       className="p-1 rounded-full bg-red-900/80 text-cream hover:bg-red-700 transition-colors duration-300 z-20"
