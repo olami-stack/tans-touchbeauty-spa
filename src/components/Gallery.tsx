@@ -205,15 +205,6 @@ export default function Gallery() {
                 </div>
               </div>
 
-              {/* Video Title and Caption Card Info */}
-              <div className="absolute bottom-4 left-4 right-4 text-left">
-                <h4 className="font-serif text-lg font-medium text-[#FDFCF7] group-hover:text-gold transition-colors duration-300 mb-1">
-                  {vid.title}
-                </h4>
-                <span className="text-[10px] font-mono tracking-wide text-cream-dark/50 block truncate">
-                  {vid.url}
-                </span>
-              </div>
             </motion.div>
           ))}
         </motion.div>
