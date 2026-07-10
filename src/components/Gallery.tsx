@@ -1,5 +1,5 @@
-import { useState, useEffect, MouseEvent } from 'react';
-import { Play, Trash2, Video, Sparkles } from 'lucide-react';
+import { useState } from 'react';
+import { Play, Video, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import hammamSpaCard from '../assets/images/hammam_spa_card_1783627605364.jpg';
 import bespokeBodyPolish from '../assets/images/bespoke_body_polish_1783627649827.jpg';
@@ -60,49 +60,8 @@ const DEFAULT_VIDEOS: VideoItem[] = [
 ];
 
 export default function Gallery() {
-  const [videos, setVideos] = useState<VideoItem[]>([]);
+  const videos = DEFAULT_VIDEOS;
   const [selectedVideo, setSelectedVideo] = useState<VideoItem | null>(null);
-
-  // Load videos from localStorage or set defaults
-  useEffect(() => {
-    const saved = localStorage.getItem('tans_touch_videos');
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved);
-        // Migrate any old R2 S3 endpoints or invalid paths to the working R2 video
-        const migrated = parsed.map((v: VideoItem) => {
-          let updatedUrl = v.url;
-          if (updatedUrl.includes('ab287c23a7e4f498f84ebd225413526f.r2.cloudflarestorage.com/videos')) {
-            updatedUrl = updatedUrl.replace(
-              'https://ab287c23a7e4f498f84ebd225413526f.r2.cloudflarestorage.com/videos',
-              'https://pub-37df63176e3c4891bd0bd2b2187205dc.r2.dev'
-            );
-          }
-          if (updatedUrl.endsWith('/hammam.mp4') || updatedUrl.includes('hammam.mp4')) {
-            updatedUrl = 'https://pub-37df63176e3c4891bd0bd2b2187205dc.r2.dev/SaveVid.Net_AQMak92LyO5FNoxxc3dmJ4ewlpYVFZf6x--Y0veHzTcomY1a0q7JcEUW7qYnTiWAPB20LeDq-n9KUYqWOtb7coG3r2sqsZQj7sLTph8.mp4';
-          }
-          return { ...v, url: updatedUrl };
-        });
-        setVideos(migrated);
-        localStorage.setItem('tans_touch_videos', JSON.stringify(migrated));
-      } catch (e) {
-        setVideos(DEFAULT_VIDEOS);
-      }
-    } else {
-      setVideos(DEFAULT_VIDEOS);
-    }
-  }, []);
-
-  const saveVideos = (updated: VideoItem[]) => {
-    setVideos(updated);
-    localStorage.setItem('tans_touch_videos', JSON.stringify(updated));
-  };
-
-  const handleDeleteVideo = (id: string, e: MouseEvent) => {
-    e.stopPropagation(); // Avoid triggering play
-    const updated = videos.filter(v => v.id !== id);
-    saveVideos(updated);
-  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -184,17 +143,6 @@ export default function Gallery() {
                   <span className="px-2.5 py-1 rounded-full bg-[#120E0A]/80 text-[10px] font-mono text-cream-dark/90">
                     {vid.duration}
                   </span>
-                  
-                  {/* Custom Added Deletion Support */}
-                  {!DEFAULT_VIDEOS.some((dv) => dv.id === vid.id) && (
-                    <button
-                      onClick={(e) => handleDeleteVideo(vid.id, e)}
-                      className="p-1 rounded-full bg-red-900/80 text-cream hover:bg-red-700 transition-colors duration-300 z-20"
-                      title="Delete Video"
-                    >
-                      <Trash2 className="w-3.5 h-3.5" />
-                    </button>
-                  )}
                 </div>
               </div>
 
