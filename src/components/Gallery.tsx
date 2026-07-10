@@ -268,23 +268,6 @@ export default function Gallery() {
                 />
               </div>
 
-              {/* R2 troubleshooting/info footer inside lightbox */}
-              <div className="px-6 py-4 bg-[#1C1611]/40 border-t border-gold/10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-left">
-                <div>
-                  <span className="text-[10px] uppercase font-bold tracking-widest text-gold">Cloudflare R2 Integration</span>
-                  <p className="text-xs text-cream-dark/60 mt-0.5 max-w-xl">
-                    If this video fails to load, ensure your bucket's Cross-Origin Resource Sharing (CORS) rules allow requests from your AI Studio development domain.
-                  </p>
-                </div>
-                <a
-                  href="https://wa.me/2348163917761?text=Hello%20Tan%27s%20Touch!%20I%27d%20like%20to%20inquire%20about%20your%20services"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-gold text-cream font-sans text-[10px] font-bold uppercase tracking-widest hover:bg-gold-light transition-all duration-300"
-                >
-                  Inquire Now
-                </a>
-              </div>
             </motion.div>
           </motion.div>
         )}
