@@ -1,5 +1,5 @@
-import { useState, useEffect, FormEvent, MouseEvent } from 'react';
-import { Play, Plus, Trash2, Video, Sparkles } from 'lucide-react';
+import { useState, useEffect, MouseEvent } from 'react';
+import { Play, Trash2, Video, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import hammamSpaCard from '../assets/images/hammam_spa_card_1783627605364.jpg';
 import bespokeBodyPolish from '../assets/images/bespoke_body_polish_1783627649827.jpg';
@@ -44,10 +44,6 @@ const DEFAULT_VIDEOS: VideoItem[] = [
 export default function Gallery() {
   const [videos, setVideos] = useState<VideoItem[]>([]);
   const [selectedVideo, setSelectedVideo] = useState<VideoItem | null>(null);
-  const [newTitle, setNewTitle] = useState('');
-  const [newUrl, setNewUrl] = useState('');
-  const [newCategory, setNewCategory] = useState('Massage');
-  const [isAdding, setIsAdding] = useState(false);
 
   // Load videos from localStorage or set defaults
   useEffect(() => {
@@ -82,28 +78,6 @@ export default function Gallery() {
   const saveVideos = (updated: VideoItem[]) => {
     setVideos(updated);
     localStorage.setItem('tans_touch_videos', JSON.stringify(updated));
-  };
-
-  const handleAddVideo = (e: FormEvent) => {
-    e.preventDefault();
-    if (!newUrl.trim() || !newTitle.trim()) return;
-
-    const newVideo: VideoItem = {
-      id: `vid-${Date.now()}`,
-      title: newTitle.trim(),
-      category: newCategory,
-      url: newUrl.trim(),
-      duration: 'Custom',
-      thumbnail: immersiveNigerianLadySpa // Default thumbnail to the beautiful Nigerian lady
-    };
-
-    const updated = [...videos, newVideo];
-    saveVideos(updated);
-    
-    // Reset form
-    setNewTitle('');
-    setNewUrl('');
-    setIsAdding(false);
   };
 
   const handleDeleteVideo = (id: string, e: MouseEvent) => {
@@ -153,100 +127,8 @@ export default function Gallery() {
               <Sparkles className="w-3 h-3 text-gold animate-pulse" />
               Connected to R2 Storage
             </div>
-
-            <button
-              onClick={() => setIsAdding(!isAdding)}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-gold text-cream font-sans text-xs font-bold uppercase tracking-widest hover:bg-gold-light active:scale-95 transition-all duration-300 shadow-md hover:-translate-y-0.5"
-            >
-              <Plus className="w-4 h-4" />
-              Add R2 Video
-            </button>
           </div>
         </div>
-
-        {/* Dynamic Expandable Form to add R2 videos */}
-        <AnimatePresence>
-          {isAdding && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.4, ease: 'easeInOut' }}
-              className="overflow-hidden mb-12"
-            >
-              <form
-                onSubmit={handleAddVideo}
-                className="bg-[#1C1611]/60 border border-gold/10 rounded-2xl p-6 sm:p-8 max-w-3xl"
-              >
-                <h3 className="font-serif italic text-xl text-cream mb-6">Register a New Video from Your Folder</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                  <div>
-                    <label className="block text-[10px] uppercase font-bold tracking-widest text-cream-dark/60 mb-2">
-                      Video Title
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="e.g., Deep Tissue Back Therapy Session"
-                      value={newTitle}
-                      onChange={(e) => setNewTitle(e.target.value)}
-                      className="w-full bg-[#120E0A] border border-gold/15 rounded-lg px-4 py-3 text-cream font-sans text-sm focus:outline-none focus:border-gold transition-colors placeholder:text-cream-dark/30"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-[10px] uppercase font-bold tracking-widest text-cream-dark/60 mb-2">
-                      Category
-                    </label>
-                    <select
-                      value={newCategory}
-                      onChange={(e) => setNewCategory(e.target.value)}
-                      className="w-full bg-[#120E0A] border border-gold/15 rounded-lg px-4 py-3 text-cream font-sans text-sm focus:outline-none focus:border-gold transition-colors appearance-none cursor-pointer"
-                    >
-                      <option value="Massage">Massage</option>
-                      <option value="Wellness">Wellness</option>
-                      <option value="Therapy">Therapy</option>
-                      <option value="Ambience">Ambience</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div className="mb-6">
-                  <label className="block text-[10px] uppercase font-bold tracking-widest text-cream-dark/60 mb-2">
-                    Cloudflare R2 Video URL
-                  </label>
-                  <input
-                    type="url"
-                    required
-                    placeholder="https://pub-37df63176e3c4891bd0bd2b2187205dc.r2.dev/your_video.mp4"
-                    value={newUrl}
-                    onChange={(e) => setNewUrl(e.target.value)}
-                    className="w-full bg-[#120E0A] border border-gold/15 rounded-lg px-4 py-3 text-cream font-sans text-sm focus:outline-none focus:border-gold transition-colors placeholder:text-cream-dark/30"
-                  />
-                  <span className="block text-[10px] text-gold/60 mt-2 font-mono leading-relaxed">
-                    Default path base is set to: <span className="underline">https://pub-37df63176e3c4891bd0bd2b2187205dc.r2.dev/</span>
-                  </span>
-                </div>
-
-                <div className="flex justify-end gap-4">
-                  <button
-                    type="button"
-                    onClick={() => setIsAdding(false)}
-                    className="px-6 py-3 rounded-full border border-gold/20 text-cream-dark hover:text-cream font-sans text-xs font-bold uppercase tracking-widest transition-colors duration-300"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    type="submit"
-                    className="px-8 py-3 rounded-full bg-gold hover:bg-gold-light text-cream font-sans text-xs font-bold uppercase tracking-widest transition-all duration-300"
-                  >
-                    Save Video
-                  </button>
-                </div>
-              </form>
-            </motion.div>
-          )}
-        </AnimatePresence>
 
         {/* Video Items Bento Grid */}
         <motion.div
