@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import membershipGift from '../assets/images/membership_gift_1783627673810.jpg';
 
 export default function GiftCards() {
   return (
@@ -14,7 +15,7 @@ export default function GiftCards() {
         >
           {/* Background image with premium dark overlay */}
           <img
-            src="/src/assets/images/membership_gift_1783627673810.jpg"
+            src={membershipGift}
             alt="Gift Cards"
             className="absolute inset-0 w-full h-full object-cover opacity-15 pointer-events-none z-0"
             referrerPolicy="no-referrer"

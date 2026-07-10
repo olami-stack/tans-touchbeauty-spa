@@ -1,53 +1,61 @@
 import { motion } from 'motion/react';
+import bodyMassageCard from '../assets/images/body_massage_card_1783627580683.jpg';
+import ledFacialCard from '../assets/images/led_facial_card_1783627593297.jpg';
+import hammamSpaCard from '../assets/images/hammam_spa_card_1783627605364.jpg';
+import waxingExfoliation from '../assets/images/waxing_exfoliation_1783627617797.jpg';
+import manicurePedicure from '../assets/images/manicure_pedicure_1783627627783.jpg';
+import teethWhitening from '../assets/images/teeth_whitening_1783627637436.jpg';
+import bespokeBodyPolish from '../assets/images/bespoke_body_polish_1783627649827.jpg';
+import homeServiceWide from '../assets/images/home_service_wide_1783627662996.jpg';
 
 const SERVICES = [
   {
     title: 'Body Massage',
     duration: '60-90 Mins',
     description: 'Deep tissue, Swedish & hot stone.',
-    image: '/src/assets/images/body_massage_card_1783627580683.jpg',
+    image: bodyMassageCard,
     whatsappMessage: "Hello Tan's Touch! I'd like to book a Body Massage session",
   },
   {
     title: 'Advanced & LED Facials',
     duration: '75 Mins',
     description: 'Glow-restoring treatments with LED light therapy.',
-    image: '/src/assets/images/led_facial_card_1783627593297.jpg',
+    image: ledFacialCard,
     whatsappMessage: "Hello Tan's Touch! I'd like to book an Advanced & LED Facials session",
   },
   {
     title: 'Hammam / Turkish Bath',
     duration: '90 Mins',
     description: 'Full-body detox, exfoliation & steam ritual.',
-    image: '/src/assets/images/hammam_spa_card_1783627605364.jpg',
+    image: hammamSpaCard,
     whatsappMessage: "Hello Tan's Touch! I'd like to book a Hammam / Turkish Bath session",
   },
   {
     title: 'Waxing & Body Exfoliation',
     duration: '45 Mins',
     description: 'Smooth, professional, painless as possible.',
-    image: '/src/assets/images/waxing_exfoliation_1783627617797.jpg',
+    image: waxingExfoliation,
     whatsappMessage: "Hello Tan's Touch! I'd like to book a Waxing & Body Exfoliation session",
   },
   {
     title: 'Hands & Feet Renewal',
     duration: '60 Mins',
     description: 'Manicure, Pedicure & Foot Detox treatments.',
-    image: '/src/assets/images/manicure_pedicure_1783627627783.jpg',
+    image: manicurePedicure,
     whatsappMessage: "Hello Tan's Touch! I'd like to book a Manicure, Pedicure & Foot Detox session",
   },
   {
     title: 'Teeth Whitening',
     duration: '45 Mins',
     description: 'Brighten your smile in one professional session.',
-    image: '/src/assets/images/teeth_whitening_1783627637436.jpg',
+    image: teethWhitening,
     whatsappMessage: "Hello Tan's Touch! I'd like to book a Teeth Whitening session",
   },
   {
     title: 'Bespoke Body Polish',
     duration: '60 Mins',
     description: 'Skin-refining exfoliation for full-body radiance.',
-    image: '/src/assets/images/bespoke_body_polish_1783627649827.jpg',
+    image: bespokeBodyPolish,
     whatsappMessage: "Hello Tan's Touch! I'd like to book a Bespoke Body Polish session",
     isCentered: true,
   },
@@ -150,7 +158,7 @@ export default function Services() {
         >
           {/* Background image with premium dark overlay */}
           <img
-            src="/src/assets/images/home_service_wide_1783627662996.jpg"
+            src={homeServiceWide}
             alt="Luxury Home Service"
             className="absolute inset-0 w-full h-full object-cover opacity-15 pointer-events-none z-0"
             referrerPolicy="no-referrer"

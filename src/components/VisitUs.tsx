@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import sanctuaryPhoto from '../assets/images/hero_luxury_spa_1783627563933.jpg';
 
 export default function VisitUs() {
   return (
@@ -61,7 +62,7 @@ export default function VisitUs() {
                   whileInView={{ scale: 1 }}
                   viewport={{ once: true, margin: '-5%' }}
                   transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                  src="/src/assets/images/hero_luxury_spa_1783627563933.jpg"
+                  src={sanctuaryPhoto}
                   alt="Tan's Touch Sanctuary Interior"
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"

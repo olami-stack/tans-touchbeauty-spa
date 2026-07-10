@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import Counter from './Counter.tsx';
+import heroImage from '../assets/images/immersive_nigerian_lady_spa_1783637278539.jpg';
 
 export default function Hero() {
   const containerVariants = {
@@ -27,7 +28,7 @@ export default function Hero() {
       {/* Immersive Background Image covering the entire section */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/src/assets/images/immersive_nigerian_lady_spa_1783637278539.jpg"
+          src={heroImage}
           alt="Luxury Spa Sanctuary"
           className="w-full h-full object-cover object-center scale-[1.01]"
           referrerPolicy="no-referrer"

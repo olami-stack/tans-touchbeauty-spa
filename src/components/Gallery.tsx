@@ -1,6 +1,9 @@
 import { useState, useEffect, FormEvent, MouseEvent } from 'react';
 import { Play, Plus, Trash2, Video, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import hammamSpaCard from '../assets/images/hammam_spa_card_1783627605364.jpg';
+import bespokeBodyPolish from '../assets/images/bespoke_body_polish_1783627649827.jpg';
+import immersiveNigerianLadySpa from '../assets/images/immersive_nigerian_lady_spa_1783637278539.jpg';
 
 interface VideoItem {
   id: string;
@@ -18,7 +21,7 @@ const DEFAULT_VIDEOS: VideoItem[] = [
     category: 'Wellness',
     url: 'https://pub-37df63176e3c4891bd0bd2b2187205dc.r2.dev/SaveVid.Net_AQMak92LyO5FNoxxc3dmJ4ewlpYVFZf6x--Y0veHzTcomY1a0q7JcEUW7qYnTiWAPB20LeDq-n9KUYqWOtb7coG3r2sqsZQj7sLTph8.mp4',
     duration: '0:30',
-    thumbnail: '/src/assets/images/hammam_spa_card_1783627605364.jpg'
+    thumbnail: hammamSpaCard
   },
   {
     id: 'vid-2',
@@ -26,7 +29,7 @@ const DEFAULT_VIDEOS: VideoItem[] = [
     category: 'Therapy',
     url: 'https://pub-37df63176e3c4891bd0bd2b2187205dc.r2.dev/SaveVid.Net_AQMak92LyO5FNoxxc3dmJ4ewlpYVFZf6x--Y0veHzTcomY1a0q7JcEUW7qYnTiWAPB20LeDq-n9KUYqWOtb7coG3r2sqsZQj7sLTph8.mp4',
     duration: '0:30',
-    thumbnail: '/src/assets/images/bespoke_body_polish_1783627649827.jpg'
+    thumbnail: bespokeBodyPolish
   },
   {
     id: 'vid-3',
@@ -34,7 +37,7 @@ const DEFAULT_VIDEOS: VideoItem[] = [
     category: 'Aesthetics',
     url: 'https://pub-37df63176e3c4891bd0bd2b2187205dc.r2.dev/SaveVid.Net_AQMak92LyO5FNoxxc3dmJ4ewlpYVFZf6x--Y0veHzTcomY1a0q7JcEUW7qYnTiWAPB20LeDq-n9KUYqWOtb7coG3r2sqsZQj7sLTph8.mp4',
     duration: '0:30',
-    thumbnail: '/src/assets/images/immersive_nigerian_lady_spa_1783637278539.jpg'
+    thumbnail: immersiveNigerianLadySpa
   }
 ];
 
@@ -91,7 +94,7 @@ export default function Gallery() {
       category: newCategory,
       url: newUrl.trim(),
       duration: 'Custom',
-      thumbnail: '/src/assets/images/immersive_nigerian_lady_spa_1783637278539.jpg' // Default thumbnail to the beautiful Nigerian lady
+      thumbnail: immersiveNigerianLadySpa // Default thumbnail to the beautiful Nigerian lady
     };
 
     const updated = [...videos, newVideo];
